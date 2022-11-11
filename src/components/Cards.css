@@ -1,0 +1,24 @@
+.card-root {
+  background-color: rgb(246, 246, 246) !important;
+  box-shadow: 10px 5px 3px rgba(253, 242, 242, 0.241);
+  transition: all 0.1s ease;
+}
+
+.card-root:hover {
+  background-color: rgb(255, 88, 88) !important;
+  transform: scale(1.05);
+}
+
+.card-text {
+  color: black;
+  font-size: 14px;
+}
+
+.card-img {
+  box-shadow: 0 0 4px 0 rgb(195, 195, 195);
+}
+
+.card-title {
+  color: black;
+  font-weight: 900 !important;
+}
