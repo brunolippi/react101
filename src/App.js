@@ -1,18 +1,22 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Button from "react-bootstrap/Button";
-import BasicExample from "./components/Card";
-import ColorSchemesExample from "./components/NavBar";
+import PokemonCard from "./components/PokemonCard";
+import NavBar from "./components/NavBar";
+import { useEffect, useState } from "react";
+import { getAllPokemon } from "./api/api";
+import PokemonListFilter from "./components/PokemonListFilter";
+import Pokedex from "./pages/Pokedex";
+import Pokemon from "./pages/Pokemon";
 
 function App() {
   return (
     <div className="App">
-      <ColorSchemesExample />
-      <header className="App-header">
-        <p></p>
-
-        <BasicExample />
-      </header>
+      <NavBar />
+      <div className="App-header">
+        <div className="container">
+          {/* <Pokemon /> */}
+          <Pokedex />
+        </div>
+      </div>
     </div>
   );
 }

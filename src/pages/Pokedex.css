@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+}
+
+.cards {
+    margin: 25px 8rem;
+    flex: 1;
+    box-sizing: border-box;
+    width: 100vw;
+    display: flex;
+    padding-top: 3rem;
+    flex-flow: row wrap;
+}
