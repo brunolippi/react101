@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const pokemonLimit = Number(10);
+const pokemonLimit = Number(6);
 
 const getPokemonList = async (offset = 0, limit) => {
   const response = await axios.get(
@@ -18,7 +18,7 @@ export const getPokemon = async (id) => {
   return (await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)).data;
 };
 
-const getPokemonDescription = async (id) => {
+export const getPokemonDescription = async (id) => {
   const descriptions = (
     await axios.get(`https://pokeapi.co/api/v2/characteristic/${id}`)
   ).data.descriptions;
@@ -28,7 +28,7 @@ const getPokemonDescription = async (id) => {
   );
 };
 
-const getPokemonImgs = async (id) => {
+export const getPokemonImgs = async (id) => {
   const response = await axios.get(
     `https://pokeapi.co/api/v2/pokemon-form/${id}`
   );
@@ -38,7 +38,7 @@ const getPokemonImgs = async (id) => {
   };
 };
 
-const getFormattedName = (name) => {
+export const getFormattedName = (name) => {
   const words = name.split(" ");
   const formattedName = [];
   for (const word of words) {
@@ -52,7 +52,7 @@ export const getAllPokemon = async (page = 0, limit = pokemonLimit) => {
   const pokemons = [];
   for (const pokemon of list.data) {
     const { name, url } = pokemon;
-    const id = url.split("pokemon/")[1].slice(0, 1);
+    const id = url.split("pokemon/")[1].split(/(\d+)/)[1];
     const description = await getPokemonDescription(id);
     const formattedName = getFormattedName(name);
     const images = await getPokemonImgs(name);

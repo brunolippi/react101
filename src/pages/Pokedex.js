@@ -2,30 +2,23 @@ import "./Pokedex.css";
 import PokemonCard from "../components/PokemonCard";
 import { useEffect, useState } from "react";
 import { getAllPokemon } from "../api/api";
-import PokemonListFilter from "../components/PokemonListFilter";
-
-const sleep = async (milliseconds) => {
-  await new Promise((resolve) => {
-    return setTimeout(resolve, milliseconds);
-  });
-};
+import PaginationBasic from "../components/Pagination";
 
 function Pokedex() {
   const [pokemons, setPokemons] = useState([]);
+  const [page, setPage] = useState(0);
   useEffect(() => {
     async function fetch() {
-      const pokemons = await getAllPokemon();
-      console.log(pokemons);
-      sleep(10000);
+      console.log("page", page);
+      const pokemons = await getAllPokemon(page);
       setPokemons(pokemons);
     }
     fetch();
-  }, []);
+  }, [page]);
   return (
     <div className="pokedex-cards">
       {pokemons.length ? (
         <>
-          <PokemonListFilter />
           {pokemons.map((pokemon) => (
             <PokemonCard
               name={pokemon.formattedName}
@@ -34,6 +27,7 @@ function Pokedex() {
               id={pokemon.id}
             />
           ))}
+          <PaginationBasic page={page} setPage={setPage} />
         </>
       ) : (
         <h1>Loading...</h1>

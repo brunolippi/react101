@@ -1,14 +1,27 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
-import "./Navbar.css"
+import { Link } from "react-router-dom";
+import "./Navbar.css";
+import pokeball from "../pokeball.png";
 
 function NavBar() {
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar bg="dark" variant="light">
       <Container>
-        <Navbar.Brand href="#home">Pokédex</Navbar.Brand>
+        <Link to="">
+          <Navbar.Brand>
+            <img
+              src={pokeball}
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />{" "}
+            Pokédex
+          </Navbar.Brand>
+        </Link>
         <Nav className="mx-right">
-          <Nav.Link href="#home" style={{ opacity: 0.7 }}>
-            About
+          <Nav.Link style={{ opacity: 0.7 }}>
+            <Link to="/about">About</Link>
           </Nav.Link>
         </Nav>
       </Container>

@@ -7,6 +7,8 @@ import PokemonListFilter from "./components/PokemonListFilter";
 import Pokedex from "./pages/Pokedex";
 import Pokemon from "./pages/Pokemon";
 import { Route, Routes } from "react-router";
+import Footer from "./components/Footer";
+import About from "./components/About";
 
 function App() {
   return (
@@ -15,11 +17,13 @@ function App() {
       <div className="App-header">
         <div className="container">
           <Routes>
-            <Route path="/" element={<Pokedex />} />
-            <Route path="/pokemon/:id/:name" element={<Pokemon />} />
+            <Route path="/" exact element={<Pokedex />} />
+            <Route path="/about" exact element={<About />} />
+            <Route path="/pokemon/:id" exact element={<Pokemon />} />
           </Routes>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

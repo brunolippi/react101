@@ -1,3 +1,10 @@
-.navbar.bg-light {
+.navbar.bg-dark {
     background-color: rgb(255, 211, 130)!important;
+}
+.navbar a {
+    color: initial;
+}
+
+.navbar a:hover {
+    color: rgb(0, 0, 0, 0.75);
 }

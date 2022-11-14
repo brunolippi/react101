@@ -1,0 +1,24 @@
+.pagination {
+    margin-top: 3%;
+    margin-left: 27%;
+
+}
+
+.active>.page-link,
+.page-link.active {
+    z-index: 3;
+    color: black !important;
+    background-color: rgb(255, 211, 130) !important;
+    ;
+    border-color: rgb(255, 211, 130) !important;
+    ;
+
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    color: white !important;
+    background-color: #282c34 !important;
+
+}

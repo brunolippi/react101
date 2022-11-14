@@ -5,26 +5,26 @@ import "./Cards.css";
 
 function PokemonCard({ id, image, name, description }) {
   const { front, back } = image;
-  const [img, setImg] = useState(front);
+  const [hover, setHover] = useState(false);
   return (
     <Card
       style={{ width: "18rem" }}
       className="card-root"
-      onMouseEnter={() => setImg(back)}
-      onMouseLeave={() => setImg(front)}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)} // on Hover
     >
-      <Link to={"pokemon/" + id}>
+      <Link to={`pokemon/${id}`}>
         <Card.Img
           className="card-img"
           variant="top"
           src={front}
-          style={img !== front ? { visibility: "hidden", display: "none" } : {}}
+          style={hover ? { visibility: "hidden", display: "none" } : {}}
         />
         <Card.Img
           className="card-img"
           variant="top"
           src={back}
-          style={img !== back ? { visibility: "hidden", display: "none" } : {}}
+          style={!hover ? { visibility: "hidden", display: "none" } : {}}
         />
         <Card.Body className="card-body">
           <Card.Title className="card-title">{name}</Card.Title>
