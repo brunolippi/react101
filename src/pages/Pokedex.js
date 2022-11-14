@@ -22,17 +22,22 @@ function Pokedex() {
     fetch();
   }, []);
   return (
-    <div className="cards">
-      <PokemonListFilter />
-      {pokemons.length
-        ? pokemons.map((pokemon) => (
+    <div className="pokedex-cards">
+      {pokemons.length ? (
+        <>
+          <PokemonListFilter />
+          {pokemons.map((pokemon) => (
             <PokemonCard
               name={pokemon.formattedName}
               description={pokemon.description}
               image={pokemon.images}
+              id={pokemon.id}
             />
-          ))
-        : "Loading..."}
+          ))}
+        </>
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </div>
   );
 }

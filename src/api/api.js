@@ -44,7 +44,7 @@ const getFormattedName = (name) => {
   for (const word of words) {
     formattedName.push(`${word.charAt(0).toUpperCase()}${word.slice(1)}`);
   }
-  return formattedName;
+  return formattedName.join(" ");
 };
 
 export const getAllPokemon = async (page = 0, limit = pokemonLimit) => {

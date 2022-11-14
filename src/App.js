@@ -6,6 +6,7 @@ import { getAllPokemon } from "./api/api";
 import PokemonListFilter from "./components/PokemonListFilter";
 import Pokedex from "./pages/Pokedex";
 import Pokemon from "./pages/Pokemon";
+import { Route, Routes } from "react-router";
 
 function App() {
   return (
@@ -13,8 +14,10 @@ function App() {
       <NavBar />
       <div className="App-header">
         <div className="container">
-          {/* <Pokemon /> */}
-          <Pokedex />
+          <Routes>
+            <Route path="/" element={<Pokedex />} />
+            <Route path="/pokemon/:id/:name" element={<Pokemon />} />
+          </Routes>
         </div>
       </div>
     </div>

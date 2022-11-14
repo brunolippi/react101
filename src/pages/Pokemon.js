@@ -5,6 +5,7 @@ function Pokemon({ id }) {
   const [pokemon, setPokemon] = useState("");
   return (
     <div>
+      <h2>{id}</h2>
       <Image
         className="card-img"
         roundedCircle
