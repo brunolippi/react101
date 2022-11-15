@@ -1,38 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Badge, Col, Container, Image, Row } from "react-bootstrap";
-import { useParams } from "react-router";
-import {
-  getFormattedName,
-  getPokemon,
-  getPokemonDescription,
-  getPokemonImgs,
-} from "../api/api";
-import { getFormattedNumber } from "../utils";
 import "./Pokemon.css";
 
 function Pokemon() {
   const [hover, setHover] = useState(false);
-  const [pokemon, setPokemon] = useState("");
-  const { id } = useParams();
+  const [pokemon, setPokemon] = useState({
+    images: {
+      back: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png",
+      front:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+    },
+  });
 
-  useEffect(() => {
-    async function fetch() {
-      const pokemons = await getPokemon(id);
-      const images = await getPokemonImgs(id);
-      const description = await getPokemonDescription(id);
-      console.log(pokemons);
-      setPokemon({ ...pokemons, images, description });
-    }
-    fetch();
-  }, []);
   return (
     <Container className="pokemon-container">
       {pokemon ? (
         <>
           <Row>
             <h1>
-              <b>{getFormattedName(pokemon.name)}</b>{" "}
-              <span>{getFormattedNumber(id)}</span>
+              <b>Pikachu</b> <span>#025</span>
             </h1>
           </Row>
           <Row>
@@ -53,40 +39,38 @@ function Pokemon() {
                 style={!hover ? { visibility: "hidden", display: "none" } : {}}
               />
               <Row>
-                <h6>{pokemon.description}</h6>
+                <h6>Likes to relax</h6>
               </Row>
             </Col>
             <Col>
               <Row>
                 <h5>Height</h5>
-                <h6>{pokemon.height * 10}cm</h6>
+                <h6>40cm</h6>
               </Row>
               <Row>
                 <h5>Weight</h5>
-                <h6>{pokemon.weight / 10}kg</h6>
+                <h6>6kg</h6>
               </Row>
               <Row>
                 <h5>Species</h5>
                 <div className="pokemon-type">
-                  <Badge bg="secondary">{pokemon.species.name}</Badge>
+                  <Badge bg="secondary">pikachu</Badge>
                 </div>
               </Row>
             </Col>
             <Col>
               <Row>
                 <h5>Experience</h5>
-                <h6>{pokemon.base_experience}</h6>
+                <h6>112</h6>
               </Row>
               <Row>
                 <h5>Abilities</h5>
-                <h6>
-                  {pokemon.abilities.map((ab) => ab.ability.name).join(", ")}
-                </h6>
+                <h6>static, lightning-rod</h6>
               </Row>
               <Row>
                 <h5>Type</h5>
                 <div className="pokemon-type">
-                  <Badge bg="danger">{pokemon.types[0].type.name}</Badge>
+                  <Badge bg="danger">electric</Badge>
                 </div>
               </Row>
             </Col>
