@@ -1,7 +1,12 @@
 .about {
-    color: white;
+  color: white;
 }
 
 .about-subtitle {
-    margin-top: 10%;
+  margin-top: 10%;
+}
+
+.about-title {
+  margin-top: 10px;
+  color: white;
 }

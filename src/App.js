@@ -9,6 +9,7 @@ import Pokemon from "./pages/Pokemon";
 import { Route, Routes } from "react-router";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
